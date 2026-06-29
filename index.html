@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>UFO Formel Check</title>
+  <title>UFO Formel Check – NEU</title>
   <style>
     body {
       background: #111;
@@ -28,30 +28,32 @@
 </head>
 <body>
 
-<h1>UFO Formel Check</h1>
+<h1>UFO Formel Check – NEU</h1>
 
 <script type="module">
-  const UFO_FORMEL = "analyse.me → (ufo × scan) + code = realize.me";
+  // NEUE mathematische UFO-Formel
+  const UFO_FORMEL_NEU = "R = A × U × S + C";
 
+  // Check-Funktion für neue Formel
   function checkUfoFormula(expr) {
-    if (expr === UFO_FORMEL) {
+    if (expr === UFO_FORMEL_NEU) {
       return {
-        state: "OVERLOAD",
-        type: "SUN-ERROR",
-        message: "Zu viel Signal: UFO × scan + code überlastet das System.",
-        critical: true
+        state: "REALIZED",
+        type: "MATH-OK",
+        message: "Neue UFO-Formel aktiv: R = A × U × S + C",
+        critical: false
       };
     }
 
     return {
-      state: "OK",
-      type: "NORMAL",
-      message: "Formel akzeptiert.",
-      critical: false
+      state: "MISMATCH",
+      type: "NO-MATCH",
+      message: "Formel stimmt nicht mit der neuen UFO-Formel überein.",
+      critical: true
     };
   }
 
-  const result = checkUfoFormula(UFO_FORMEL);
+  const result = checkUfoFormula(UFO_FORMEL_NEU);
 
   const box = document.createElement("div");
   box.className = result.critical ? "error" : "ok";
@@ -65,4 +67,3 @@
 
 </body>
 </html>
-
