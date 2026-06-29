@@ -1,5 +1,5 @@
-// PIfekT.test.js (REAL RAW)
-// Testet: ALT, NEU, IST, SOLL, OFFEN
+// PIfekT.test.js (FINAL RAW)
+// Deckt ALT, NEU, IST, SOLL, OFFEN komplett ab
 
 import { PIfekTItem } from '../src/PIfekT.item.js';
 import { PIfekTCheck } from '../src/PIfekT.check.js';
@@ -29,7 +29,7 @@ const neuItem = new PIfekTItem({
 });
 
 // ------------------------------
-// IST-Zustand (was wirklich da ist)
+// IST-Zustand (was wirklich existiert)
 // ------------------------------
 
 const ist = {
@@ -38,7 +38,7 @@ const ist = {
 };
 
 // ------------------------------
-// SOLL-Zustand (was PIfekT verlangt)
+// SOLL-Zustand (Systemanforderungen)
 // ------------------------------
 
 const soll = {
@@ -50,7 +50,7 @@ const soll = {
 };
 
 // ------------------------------
-// OFFEN-LEGEN (alles sichtbar machen)
+// OFFEN-LEGEN (alles sichtbar)
 // ------------------------------
 
 console.log('--- IST ---');
@@ -63,4 +63,4 @@ console.log('--- CHECK ALT ---');
 console.log(PIfekTCheck.summary(altItem));
 
 console.log('--- CHECK NEU ---');
-console.log(PIfekTCheck
+console.log(PIfekTCheck.summary(neuItem));
