@@ -1,45 +1,66 @@
-// PIfekT.item.js
-// RAW-Basis für ein Item im PIfekT-System
+// PIfekT.test.js (REAL RAW)
+// Testet: ALT, NEU, IST, SOLL, OFFEN
 
-export class PIfekTItem {
-  constructor({ id = null, label = '', type = 'item', meta = {}, value = null } = {}) {
-    this.id = id;
-    this.label = label;
-    this.type = type;
-    this.meta = meta;
-    this.value = value;
-  }
+import { PIfekTItem } from '../src/PIfekT.item.js';
+import { PIfekTCheck } from '../src/PIfekT.check.js';
 
-  setValue(v) {
-    this.value = v;
-    return this;
-  }
+// ------------------------------
+// ALT-Zustand (bestehendes Item)
+// ------------------------------
 
-  getValue() {
-    return this.value;
-  }
+const altItem = new PIfekTItem({
+  id: 'ALT-1',
+  label: 'AltItem',
+  type: 'item',
+  value: 10,
+  meta: { state: 'old' }
+});
 
-  setMeta(k, v) {
-    this.meta[k] = v;
-    return this;
-  }
+// ------------------------------
+// NEU-Zustand (neues Item)
+// ------------------------------
 
-  getMeta(k) {
-    return this.meta[k];
-  }
+const neuItem = new PIfekTItem({
+  id: 'NEU-1',
+  label: 'NeuItem',
+  type: 'item',
+  value: 99,
+  meta: { state: 'new' }
+});
 
-  toObject() {
-    return {
-      id: this.id,
-      label: this.label,
-      type: this.type,
-      meta: { ...this.meta },
-      value: this.value,
-    };
-  }
-}
+// ------------------------------
+// IST-Zustand (was wirklich da ist)
+// ------------------------------
 
-export function createPIfekTItem(cfg = {}) {
-  return new PIfekTItem(cfg);
-}
+const ist = {
+  alt: altItem.toObject(),
+  neu: neuItem.toObject()
+};
 
+// ------------------------------
+// SOLL-Zustand (was PIfekT verlangt)
+// ------------------------------
+
+const soll = {
+  requiredFields: ['id', 'label', 'type', 'meta', 'value'],
+  validAlt: PIfekTCheck.isValidItem(altItem),
+  validNeu: PIfekTCheck.isValidItem(neuItem),
+  hasValueAlt: PIfekTCheck.hasValue(altItem),
+  hasValueNeu: PIfekTCheck.hasValue(neuItem)
+};
+
+// ------------------------------
+// OFFEN-LEGEN (alles sichtbar machen)
+// ------------------------------
+
+console.log('--- IST ---');
+console.log(ist);
+
+console.log('--- SOLL ---');
+console.log(soll);
+
+console.log('--- CHECK ALT ---');
+console.log(PIfekTCheck.summary(altItem));
+
+console.log('--- CHECK NEU ---');
+console.log(PIfekTCheck
