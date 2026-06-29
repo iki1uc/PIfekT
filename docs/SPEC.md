@@ -18,4 +18,3 @@
 - isValidItem(obj)
 - hasValue(obj)
 - summary(obj)
-
