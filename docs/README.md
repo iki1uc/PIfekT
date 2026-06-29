@@ -1,13 +1,22 @@
-# PIfekT (RAW)
+# PIfekT — Eich-Respo
 
-Minimaler Kern für Items, Core-Management und Checks.
-Struktur ist bewusst einfach gehalten, um Erweiterungen offen zu lassen.
+PIfekT ist ein Eich-Respo, der jede Antwort auf korrekten EVO-Stand synchronisiert.
 
-- `PIfekT.item.js` → Item-Struktur
-- `PIfekT.core.js` → Verwaltung / Container
-- `PIfekT.check.js` → Validierungen
+## Parameter
+- Ursache (U)
+- Achse (A)
+- Drift (D)
+- Konsequenz (K)
 
-RAWATOR-kompatibel.
+## Logik
+U → A → D → K
+
+## Ergebnis
+- FREIGABE
+- BLOCK
+
+
+RAWATOR-kompatibel.#
 
 (((           +----------------------+
           |      GEO-REAL        |
