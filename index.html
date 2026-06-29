@@ -1,1 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>UFO Formel Check</title>
+  <style>
+    body {
+      background: #111;
+      color: #eee;
+      font-family: monospace;
+      padding: 40px;
+    }
+    .error {
+      padding: 20px;
+      border: 2px solid #ffcc00;
+      background: #332200;
+      color: #ffdd55;
+      margin-top: 20px;
+    }
+    .ok {
+      padding: 20px;
+      border: 2px solid #00cc66;
+      background: #002b14;
+      color: #66ff99;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>UFO Formel Check</h1>
+
+<script type="module">
+  const UFO_FORMEL = "analyse.me → (ufo × scan) + code = realize.me";
+
+  function checkUfoFormula(expr) {
+    if (expr === UFO_FORMEL) {
+      return {
+        state: "OVERLOAD",
+        type: "SUN-ERROR",
+        message: "Zu viel Signal: UFO × scan + code überlastet das System.",
+        critical: true
+      };
+    }
+
+    return {
+      state: "OK",
+      type: "NORMAL",
+      message: "Formel akzeptiert.",
+      critical: false
+    };
+  }
+
+  const result = checkUfoFormula(UFO_FORMEL);
+
+  const box = document.createElement("div");
+  box.className = result.critical ? "error" : "ok";
+  box.innerHTML = `
+    <strong>${result.type}</strong><br>
+    ${result.message}<br><br>
+    Zustand: ${result.state}
+  `;
+  document.body.appendChild(box);
+</script>
+
+</body>
+</html>
 
